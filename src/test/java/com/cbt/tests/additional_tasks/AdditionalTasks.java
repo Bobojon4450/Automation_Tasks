@@ -11,7 +11,7 @@ import org.testng.annotations.*;
 import java.util.List;
 
 public class AdditionalTasks {
-    WebDriver driver;
+    private WebDriver driver;
     WebElement tc4_errorMessage;
     WebElement tc5_errorMessage;
     WebElement tc6_errorMessage;
@@ -28,7 +28,7 @@ public class AdditionalTasks {
         driver = BrowserFactory.getDriver("chrome");
         BrowserUtils.maximaze(driver);
         driver.get(URL);
-        BrowserUtils.wait(1);
+        BrowserUtils.implicitWait(10,driver);
     }
 
     @AfterMethod
@@ -37,7 +37,7 @@ public class AdditionalTasks {
         driver.quit();
     }
 
-    @Test
+    @Test(description = "Verifying sign-up message")
     public void testCase_1() {
         driver.findElement(By.linkText("Sign Up For Mailing List")).click();
         driver.findElement(By.cssSelector("input[name ='full_name']")).sendKeys("Adamsho");
@@ -47,7 +47,7 @@ public class AdditionalTasks {
         driver.findElement(By.cssSelector(".radius")).click();
         BrowserUtils.wait(3);
         String actual = driver.findElement(By.cssSelector("h3[name='signup_message']")).getText();
-        Assert.assertEquals(actual, tc1_expected);
+        Assert.assertEquals(actual, tc1_expected, "Should pass");
         WebElement homeButton = driver.findElement(By.cssSelector("#wooden_spoon"));
         BrowserUtils.wait(1);
         Assert.assertTrue(homeButton.isDisplayed());

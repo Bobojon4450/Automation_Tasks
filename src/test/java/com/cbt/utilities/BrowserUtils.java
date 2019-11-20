@@ -2,6 +2,9 @@ package com.cbt.utilities;
 
 import org.openqa.selenium.WebDriver;
 
+import java.sql.Time;
+import java.util.concurrent.TimeUnit;
+
 public class BrowserUtils {
 
     public static void wait(int seconds){
@@ -10,6 +13,10 @@ public class BrowserUtils {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void implicitWait(int seconds, WebDriver driver){
+        driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
     }
 
     public static void maximaze(WebDriver driver){
