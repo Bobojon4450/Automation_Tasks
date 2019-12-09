@@ -140,7 +140,7 @@ public class Tests_1_through_12 {
 
     @DataProvider(name = "testData")
     public static Object[][] testData() {
-        return new Object[][]{{200},{301},{404},{500}};
+        return new Object[][]{{200}, {301}, {404}, {500}};
     }
 
     @Test(dataProvider = "testData")
@@ -152,5 +152,7 @@ public class Tests_1_through_12 {
         Assert.assertTrue(successMsg.getText().contains(expectedMsg));
         Assert.assertTrue(successMsg.isDisplayed());
     }
+
+
 
 }
