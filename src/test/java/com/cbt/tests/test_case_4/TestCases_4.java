@@ -31,7 +31,13 @@ public class TestCases_4 {
         Driver.getDriver().findElement(By.id("prependedInput2")).sendKeys(ConfigurationReader.getProperty("password"), Keys.ENTER);
         /* String xpath = "//a[@class='unclickable' and @href = '#' ]/span[@class='title title-level-1' and contains(text(),'Activities')]";  */
         /* WebElement activitiesElement = driver.findElement(By.xpath(xpath));  */
-        BrowserUtils.wait(3);
+
+        /*BrowserUtils.wait(3);*/
+        WebElement loaderMask= null;
+        if (Driver.getDriver().findElements(By.cssSelector("div[class='loader-mask shown']")).size() > 0) {
+            loaderMask = Driver.getDriver().findElement(By.cssSelector("div[class='loader-mask shown']"));
+            wait.until(ExpectedConditions.invisibilityOf(loaderMask));
+        }
         WebElement activitiesElement = Driver.getDriver().findElement(By.linkText("Activities"));
         wait.until(ExpectedConditions.visibilityOf(activitiesElement));
         wait.until(ExpectedConditions.elementToBeClickable(activitiesElement));

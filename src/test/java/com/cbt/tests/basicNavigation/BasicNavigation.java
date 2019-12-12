@@ -1,8 +1,8 @@
 package com.cbt.tests.basicNavigation;
 
-import com.cbt.utilities.BrowserFactory;
-import com.cbt.utilities.BrowserUtils;
-import com.cbt.utilities.StringUtility;
+import com.cbt.utils.BrowserFactory;
+import com.cbt.utils.BrowserUtils;
+import com.cbt.utils.StringUtility;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;

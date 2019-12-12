@@ -1,10 +1,10 @@
 package com.cbt.pages;
 
+import com.cbt.utils.BrowserUtils;
+import com.cbt.utils.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.BrowserUtils;
-import utils.Driver;
 
 public class CreateCarPage extends BasePage {
 

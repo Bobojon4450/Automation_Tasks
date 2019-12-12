@@ -1,8 +1,8 @@
 package com.cbt.pages;
 
+import com.cbt.utils.BrowserUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.BrowserUtils;
 
 public class CalendarEventsPage extends BasePage{
 

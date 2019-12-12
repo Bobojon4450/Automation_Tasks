@@ -1,7 +1,8 @@
 package com.cbt.tests.task2;
 
-import com.cbt.utilities.BrowserFactory;
-import com.cbt.utilities.BrowserUtils;
+
+import com.cbt.utils.BrowserFactory;
+import com.cbt.utils.BrowserUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
