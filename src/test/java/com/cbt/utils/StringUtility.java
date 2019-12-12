@@ -1,4 +1,4 @@
-package com.cbt.utilities;
+package com.cbt.utils;
 
 public class StringUtility {
 

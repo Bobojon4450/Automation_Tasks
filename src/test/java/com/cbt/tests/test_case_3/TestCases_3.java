@@ -1,8 +1,8 @@
 package com.cbt.tests.test_case_3;
 
-import com.cbt.utilities.BrowserUtils;
-import com.cbt.utilities.ConfigurationReader;
-import com.cbt.utilities.Driver;
+import com.cbt.utils.BrowserUtils;
+import com.cbt.utils.ConfigurationReader;
+import com.cbt.utils.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -97,51 +97,8 @@ public class TestCases_3 {
         }
     }
 
-    @Test(description = "Verify that following data is displayed:")
-    public void test_6() {
-        String expectedDescription = "This is a a weekly testers meeting";//==
-        String expectedTitle = "Testers Meeting";//1
-        String organizer = "Stephan Haley";//5
-        String stDate = "Nov 27, 2019, 9:30 PM";//2
-        String eDate = "Nov 27, 2019, 10:30 PM";//3
-        String allDayEvent = "No";//4
-        String expectedGuest = "Tom Smith";//==
-        String expectedReccurrence = "Weekly every 1 week on Wednesday";
-        String expectedHangOutCall = "No";
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 35);
-        Actions action = new Actions(Driver.getDriver());
-        List<String> expectedData = new ArrayList<>(Arrays.asList(expectedTitle, stDate, eDate, allDayEvent, organizer));
-        List<WebElement> testersList = Driver.getDriver().findElements(By.xpath("//tr[@class='grid-row row-click-action' ]//td[2]"));
-        for (int j = 0; j < testersList.size(); j++) {
-            if (testersList.get(j).getText().equals(expectedTitle)) {
-                wait.until(ExpectedConditions.elementToBeClickable(testersList.get(j)));
-                wait.until(ExpectedConditions.visibilityOf(testersList.get(j)));
-                BrowserUtils.wait(1);
-                action.moveToElement(testersList.get(j)).doubleClick(testersList.get(j));
-//                testersList.get(j).click();
-                BrowserUtils.wait(1);
-                WebElement tomSmith = Driver.getDriver().findElement(By.linkText("Tom Smith"));
-                wait.until(ExpectedConditions.visibilityOf(tomSmith));
-                wait.until(ExpectedConditions.elementToBeClickable(tomSmith));
-                wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Tom Smith")));
-                for (int i = 1; i <= expectedData.size(); i++) {
-                    BrowserUtils.wait(2);
-                    Assert.assertEquals(expectedData.get(i - 1), extractText(i));
-                }
-            }
-            WebElement description = Driver.getDriver().findElement(By.cssSelector(".control-label.html-property p"));
-            WebElement guest = Driver.getDriver().findElement(By.xpath("//a[@href='/user/view/18']"));
-            WebElement reccurence = Driver.getDriver().findElement(By.xpath("(//div[@class ='control-label'])[7]"));
-            WebElement hangOut = Driver.getDriver().findElement(By.xpath("(//div[@class ='control-label'])[8]"));
-            Assert.assertEquals(expectedDescription, description.getText());
-            Assert.assertEquals(expectedGuest, guest.getText());
-            Assert.assertEquals(expectedReccurrence, reccurence.getText());
-            break;
-        }
-    }
-
     @Test (description = "Verify that the data for testers meeting is displayed correct")
-    public void test_7(){
+    public void test_6(){
         //find testers meeting element
         WebElement testersMeeting = Driver.getDriver().findElement(By.cssSelector(".grid-row.row-click-action:nth-of-type(13)"));
         testersMeeting.click();
@@ -167,13 +124,6 @@ public class TestCases_3 {
             }
         }
     }
-
-
-
-
-
-
-
 
 
     public static String extractText(int x) {
@@ -260,3 +210,47 @@ public class TestCases_3 {
             }
         }
   */
+
+/*    @Test(description = "Verify that following data is displayed:")
+    public void test_6() {
+        String expectedDescription = "This is a a weekly testers meeting";//==
+        String expectedTitle = "Testers Meeting";//1
+        String organizer = "Stephan Haley";//5
+        String stDate = "Nov 27, 2019, 9:30 PM";//2
+        String eDate = "Nov 27, 2019, 10:30 PM";//3
+        String allDayEvent = "No";//4
+        String expectedGuest = "Tom Smith";//==
+        String expectedReccurrence = "Weekly every 1 week on Wednesday";
+        String expectedHangOutCall = "No";
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 35);
+        Actions action = new Actions(Driver.getDriver());
+        List<String> expectedData = new ArrayList<>(Arrays.asList(expectedTitle, stDate, eDate, allDayEvent, organizer));
+        List<WebElement> testersList = Driver.getDriver().findElements(By.xpath("//tr[@class='grid-row row-click-action' ]//td[2]"));
+        for (int j = 0; j < testersList.size(); j++) {
+            if (testersList.get(j).getText().equals(expectedTitle)) {
+                wait.until(ExpectedConditions.elementToBeClickable(testersList.get(j)));
+                wait.until(ExpectedConditions.visibilityOf(testersList.get(j)));
+                BrowserUtils.wait(1);
+                action.moveToElement(testersList.get(j)).doubleClick(testersList.get(j));
+//                testersList.get(j).click();
+                BrowserUtils.wait(1);
+                WebElement tomSmith = Driver.getDriver().findElement(By.linkText("Tom Smith"));
+                wait.until(ExpectedConditions.visibilityOf(tomSmith));
+                wait.until(ExpectedConditions.elementToBeClickable(tomSmith));
+                wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Tom Smith")));
+                for (int i = 1; i <= expectedData.size(); i++) {
+                    BrowserUtils.wait(2);
+                    Assert.assertEquals(expectedData.get(i - 1), extractText(i));
+                }
+            }
+            BrowserUtils.wait(1);
+            WebElement description = Driver.getDriver().findElement(By.cssSelector(".control-label.html-property p"));
+            WebElement guest = Driver.getDriver().findElement(By.xpath("//a[@href='/user/view/18']"));
+            WebElement reccurence = Driver.getDriver().findElement(By.xpath("(//div[@class ='control-label'])[7]"));
+            WebElement hangOut = Driver.getDriver().findElement(By.xpath("(//div[@class ='control-label'])[8]"));
+            Assert.assertEquals(expectedDescription, description.getText());
+            Assert.assertEquals(expectedGuest, guest.getText());
+            Assert.assertEquals(expectedReccurrence, reccurence.getText());
+            break;
+        }
+    }*/

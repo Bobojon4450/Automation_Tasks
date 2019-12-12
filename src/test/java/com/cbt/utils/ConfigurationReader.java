@@ -1,4 +1,4 @@
-package com.cbt.utilities;
+package com.cbt.utils;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,9 +10,11 @@ public class ConfigurationReader {
     private static Properties configFile;
 
     static {
-        try {
+        try {   /*  Provides access to a file   */
             FileInputStream input = new FileInputStream("configuration.properties");
+            /*  Initialize properties object    */
             configFile = new Properties();
+            /*  Load configuration.properties file  */
             configFile.load(input);
             input.close();
         } catch (FileNotFoundException e) {

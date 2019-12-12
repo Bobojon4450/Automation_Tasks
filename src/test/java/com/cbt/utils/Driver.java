@@ -1,4 +1,4 @@
-package com.cbt.utilities;
+package com.cbt.utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -9,10 +9,12 @@ public class Driver {
 
     public static WebDriver driver;
 
+    /*  Making sure that object of Driver won't be created    */
     private Driver() {
     }
 
     public static WebDriver getDriver() {
+        /*  if webDriver object was not created yet */
         if (driver == null) {
             String browser = ConfigurationReader.getProperty("browser");
             switch (browser) {
@@ -33,7 +35,9 @@ public class Driver {
 
     public static void close() {
         if (driver != null) {
+            /*  close all browsers */
             driver.quit();
+            /* Destroy driver object, ready for gc()  */
             driver = null;
         }
     }
